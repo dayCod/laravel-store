@@ -31,12 +31,11 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         switch(Auth::user()->role) {
             case 'buyer':
-                return redirect()->intended(RouteServiceProvider::HOME);
-                break;
+                return redirect()->intended(RouteServiceProvider::HOME)->with('message', 'Berhasil Login Buyer');
             case 'seller':
-                return redirect()->route('seller');
+                return redirect()->route('seller')->with('message', 'Berhasil Login Seller');
             default:
-                return redirect()->route('login');
+                return redirect()->route('login')->with('error', 'Email / Pass Salah');
         }
     }
 

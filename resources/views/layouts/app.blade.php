@@ -10,6 +10,9 @@
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
+        <link rel="stylesheet" href="{{ asset('iziToast/dist/css/iziToast.css') }}">
+        <link rel="stylesheet" href="{{ asset('iziToast/dist/css/iziToast.min.css') }}">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -21,5 +24,8 @@
                 @yield('content')
             </main>
         </div>
+        <script src="{{ asset('iziToast/dist/js/iziToast.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('iziToast/dist/js/iziToast.min.js') }}" type="text/javascript"></script>
+        @yield('scripts')
     </body>
 </html>
