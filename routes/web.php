@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BuyerController;
+use App\Http\Controllers\SellerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/testing', function() {
+    return view('testing');
+}); 
+
+Route::middleware(['auth', 'seller'])->group(function() {
+    Route::get('/dashboard-seller', SellerController::class)->name('seller');
+});
+
+Route::middleware(['auth', 'buyer'])->group(function() {
+    Route::get('/dashboard-buyer', BuyerController::class)->name('buyer');
+});
+
+
+require __DIR__.'/auth.php';
