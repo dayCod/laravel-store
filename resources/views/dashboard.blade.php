@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Dashboard Buyer</h1>
+    <x-products-card :data='$data'/>
 @endsection
 
 @section('scripts')

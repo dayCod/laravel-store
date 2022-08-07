@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BuyerController extends Controller
@@ -14,6 +15,7 @@ class BuyerController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('dashboard');
+        $data = Product::all();
+        return view('dashboard')->with('data', $data);
     }
 }
