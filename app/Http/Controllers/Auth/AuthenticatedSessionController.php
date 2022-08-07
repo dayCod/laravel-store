@@ -19,7 +19,7 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
-
+ 
     /**
      * Handle an incoming authentication request.
      *
@@ -29,10 +29,15 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-
-        $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        switch(Auth::user()->role) {
+            case 'buyer':
+                return redirect()->intended(RouteServiceProvider::HOME);
+                break;
+            case 'seller':
+                return redirect()->route('seller');
+            default:
+                return redirect()->route('login');
+        }
     }
 
     /**
